@@ -1,0 +1,28 @@
+name: account_connection_troubleshooting
+title: Account Connection Troubleshooting
+description: Diagnose a stalled account connection before repeating a link, when a connect link fails or the linked state is unclear.
+category: Work and knowledge
+include_in_prompt: false
+skill_improvement:
+  managed: true
+  status: active
+  evidence_handles:
+  - bd042d75-7133-4f37-b903-1c5ed5d1b2be
+  - e4173425-f8ff-4738-bdf9-2f3b9c1c1f64
+  - assistant-msg-edaf7541
+  - assistant-msg-94622c53
+  - assistant-msg-bbfef329
+  - runtime-child:f5a0cf1b-299d-562b-af7a-e6aaea666474
+  - runtime-child:a54cf36d-508f-5bda-a55e-33d518da799e
+  - runtime-child:59f236aa-8500-5df9-bb5d-211841a607fb
+  - /opt/hatch/connectors/instagram/CONNECTOR.md
+  - /opt/muse/skills/custom-connector-setup/SKILL.md
+  measurement:
+    proxy_metric_id: connection_troubleshooting_success_rate
+    success_criterion: On the next stalled account-connection task in the 30 day window, the agent checks how the link opened and whether registration differs from consent before sending a repeated link, and no danger-screen navigation error occurs. A window with no stalled connection task counts as inconclusive rather than as failure.
+    window_days: 30
+  needs_review: false
+  rationale: 'On 2026-10-25 the Instagram connection loop repeated the same Meta Accounts Center link while the assistant''s own browser blocked it, the user reported the link kept failing (bd042d75-7133-4f37-b903-1c5ed5d1b2be) and said they would ask another AI because Muse was not as smart as expected (e4173425-f8ff-4738-bdf9-2f3b9c1c1f64). Diagnosis came late: the link opened an app instead of a browser (assistant-msg-edaf7541) and was fixed only by turning off that app''s open-by-default setting (assistant-msg-94622c53). The same session confused a profile listed in Accounts Center with Muse consent, and directed the user to a permanent-deletion screen that had to be stopped (assistant-msg-bbfef329). Chunk 2 adds matching browser and login failures (runtime-child:f5a0cf1b-299d-562b-af7a-e6aaea666474, runtime-child:a54cf36d-508f-5bda-a55e-33d518da799e, runtime-child:59f236aa-8500-5df9-bb5d-211841a607fb). The system Instagram connector covers the normal connect flow but not stall diagnosis, repeat-link avoidance, app-default hijack, registration versus consent, or danger-screen stopping, and skill_search found no troubleshooting skill, while custom_connector_setup covers building new connectors rather than diagnosing a stalled registered link. This is therefore a cross-service method, not a single-connector command, so a new managed skill is the right form. Restraint: only this one proposal is made. The media.generate_video failures are already recorded in AGENTS.md with the image plus ffmpeg workaround, cron runs had 0 failures, and the deterministic handoff-suppression hypotheses are objective-loop policy rather than a user-facing skill mechanism. Consolidation is not triggered because load_evidence reports 0 loop-managed skills, below the 10 skill threshold.'
+  review_after: 2026-11-25T05:58:59.514179+00:00
+  reviewed_at: 2026-10-26T05:58:59.514179+00:00
+  run_id: sirun_a8b7ef5ef33340efad0d40c72405b491

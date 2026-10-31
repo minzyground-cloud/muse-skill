@@ -1,0 +1,7 @@
+# Adapted for this VM from nanbada/muse-creative-skills (MIT License),
+# productivity/voice-dump-dispatch. Installed 2026-10-25.
+name: "voice_dump_dispatch"
+title: "Voice-Dump Dispatch"
+description: "Turns a rambling voice memo or multi-task message into a numbered task list, runs independent tasks in parallel, and returns one compressed report. Use when one message holds 2 or more tasks, corrections, or questions."
+category: "Work and knowledge"
+include_in_prompt: true

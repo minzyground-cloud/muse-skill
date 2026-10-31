@@ -1,0 +1,5 @@
+name: "video_production_sfx"
+title: "Video Production SFX (効果音ラボ)"
+description: "Pick scene-appropriate sound effects from 効果音ラボ (soundeffect-lab.info) and mix them into video edits with the ffmpeg-skill. Use when a reel, short or video needs sound effects."
+category: "Media and creativity"
+include_in_prompt: false
